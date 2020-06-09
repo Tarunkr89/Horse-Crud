@@ -28,6 +28,43 @@
   color: #61dafb;
 }
 
+.bg-color {
+  background-color: #61dafb;
+  min-height: 100vh;
+}
+.form-bg-color {
+  background-color: #fff;
+  padding: 50px;
+  border-radius: 4px;
+  margin-top: 100px;
+}
+.form-check-input {
+  position: relative;
+  margin-left: 0px;
+  margin-right: 10px;
+  margin-bottom: 1rem;
+}
+.bg-color input[type="text"],
+.react-datepicker-wrapper {
+  width: 100% !important;
+  display: block !important;
+}
+select {
+  border: 1px solid #999 !important;
+}
+.submit-btn {
+  display: flex;
+  margin: auto;
+}
+.error-message {
+  position: absolute;
+  color: red;
+  bottom: 2px;
+}
+.min-width {
+  min-width: 300px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

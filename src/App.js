@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import HorseDetail from "./pages/HorseDetail";
+import EditDetail from "./pages/EditDetail";
+import PrivateRoute from "./PrivateRoute";
+import { AuthContext } from "./context/auth";
+import "./App.css";
+import "./Intercepter";
 
-function App() {
+function App(props) {
+  const existingToken = JSON.parse(localStorage.getItem("token"));
+  const [authToken, setAuthToken] = useState(existingToken);
+
+  const setToken = (data) => {
+    localStorage.setItem("token", JSON.stringify(data));
+    setAuthToken(data);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContext.Provider value={{ authToken, setAuthToken: setToken }}>
+      <Router>
+        <div>
+          <Route exact path="/" component={Login} />
+          <PrivateRoute exact path="/horse-detail" component={EditDetail} />
+          <PrivateRoute path="/create-horse" component={HorseDetail} />
+        </div>
+      </Router>
+    </AuthContext.Provider>
   );
 }
 
