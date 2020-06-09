@@ -34,7 +34,6 @@ const EditDetail = () => {
   }, []);
 
   const onSubmit = async (values, list) => {
-    console.log(values);
     const _values = { ...values };
     if (_values.horse_number) {
       _values.horse_number = values.horse_number.toString();
@@ -51,7 +50,6 @@ const EditDetail = () => {
   };
 
   const removeHorse = async () => {
-    console.log(show);
     try {
       await axios.delete(`http://dev.api.staller.show/v1/horses/${show}`);
       setHorseList((horseList) =>
@@ -73,12 +71,7 @@ const EditDetail = () => {
       const { data } = await axios.get(
         `http://dev.api.staller.show/v1/horses/${id}`
       );
-      console.log(data.data);
-      // setHorseDetail((horseDetail) =>
-      //   horseDetail.find((value) => value.id === id)
-      // );
       setHorseDetail(data.data);
-      // console.log();
       setShowHorseDetail(true);
     } catch (e) {
       setIsError(true);
@@ -201,7 +194,6 @@ const EditDetail = () => {
           <Modal.Body>
             <ul>
               <li>ID: {horseDetail.id}</li>
-
               <li>Name: {horseDetail.horse_name}</li>
               <li>Number: {horseDetail.horse_number}</li>
               <li>Color: {horseDetail.color}</li>

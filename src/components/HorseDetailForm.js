@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Button, Container, Row, Col } from "react-bootstrap";
+import React from "react";
+import { Button, Row, Col } from "react-bootstrap";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as yup from "yup";
-// import axios from "axios";
+
 import {
   InputStyle,
   DateInput,
@@ -11,7 +11,6 @@ import {
   SelectStyle,
 } from "../components/AuthForms";
 import { format } from "date-fns";
-// import { useHistory } from "react-router-dom";
 import { validateHorseName, validateHorseNumber } from "../validators";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -21,8 +20,6 @@ const createHorseValidation = yup.object().shape({
 });
 
 const HorseDetailForm = ({ initialValues, handleSubmit }) => {
-  // const [isError, setIsError] = useState(false);
-  // const history = useHistory();
   console.log(initialValues);
 
   return (

@@ -1,16 +1,8 @@
 import React, { useState } from "react";
-import { Button, Container, Row, Col } from "react-bootstrap";
-import { Formik, Form, ErrorMessage } from "formik";
-import * as yup from "yup";
+import { Container, Row, Col } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import {
-  InputStyle,
-  DateInput,
-  CheckboxStyle,
-  RadioStyle,
-  SelectStyle,
-} from "../components/AuthForms";
+
 import "react-datepicker/dist/react-datepicker.css";
 import HorseDetailForm from "../components/HorseDetailForm";
 
@@ -19,7 +11,6 @@ const HorseDetail = () => {
   const history = useHistory();
 
   const onSubmit = async (values) => {
-    // console.log(values);
     const _values = { ...values };
     if (_values.horse_number) {
       _values.horse_number = values.horse_number.toString();
